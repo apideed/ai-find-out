@@ -25,6 +25,7 @@ CREATE INDEX idx_posts_category ON posts(category);
 CREATE INDEX idx_posts_published ON posts(published_at DESC);
 
 -- 全文搜索（SQLite FTS5）
+DROP TABLE IF EXISTS posts_fts;
 CREATE VIRTUAL TABLE posts_fts USING fts5(
   title,
   content,
