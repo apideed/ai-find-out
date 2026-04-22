@@ -35,16 +35,18 @@ CREATE VIRTUAL TABLE posts_fts USING fts5(
 );
 
 -- 触发器：自动同步 FTS
+DROP TRIGGER IF EXISTS posts_ai;
 CREATE TRIGGER posts_ai AFTER INSERT ON posts BEGIN
   INSERT INTO posts_fts(rowid, title, content)
   VALUES (new.id, new.title, new.content);
 END;
-
+DROP TRIGGER IF EXISTS posts_au;
 CREATE TRIGGER posts_au AFTER UPDATE ON posts BEGIN
   UPDATE posts_fts SET title = new.title, content = new.content
   WHERE rowid = new.id;
 END;
 
+DROP TRIGGER IF EXISTS posts_ad;
 CREATE TRIGGER posts_ad AFTER DELETE ON posts BEGIN
   DELETE FROM posts_fts WHERE rowid = old.id;
 END;
