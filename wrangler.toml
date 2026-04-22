@@ -23,6 +23,8 @@ service = "qiaomu-blog-opensource"
 
 [[d1_databases]]
 binding = "DB"
+database_name = "ai-find-out"
+database_id = "ee7c358d-3de1-4c76-ac5d-f59270246c71"
 
 [[r2_buckets]]
 binding = "IMAGES"
