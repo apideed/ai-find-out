@@ -1,5 +1,5 @@
 -- 文章表
-CREATE TABLE posts (
+CREATE TABLE IF NOT EXISTS posts (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   slug TEXT UNIQUE NOT NULL,
   title TEXT NOT NULL,
@@ -49,7 +49,7 @@ CREATE TRIGGER posts_ad AFTER DELETE ON posts BEGIN
 END;
 
 -- 分类统计表
-CREATE TABLE categories (
+CREATE TABLE IF NOT EXISTS categories (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT UNIQUE NOT NULL,
   slug TEXT UNIQUE NOT NULL,
@@ -57,13 +57,13 @@ CREATE TABLE categories (
 );
 
 -- 站点设置表
-CREATE TABLE site_settings (
+CREATE TABLE IF NOT EXISTS site_settings (
   key TEXT PRIMARY KEY,
   value TEXT NOT NULL
 );
 
 -- AI 操作表：编辑器 Ask AI 面板的预设操作
-CREATE TABLE ai_actions (
+CREATE TABLE IF NOT EXISTS ai_actions (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   action_key TEXT UNIQUE NOT NULL,
   label TEXT NOT NULL,
@@ -101,7 +101,7 @@ VALUES
    0.2, 60, 1);
 
 -- AI Provider 配置表（API Key 使用加密存储）
-CREATE TABLE ai_provider_profiles (
+CREATE TABLE IF NOT EXISTS ai_provider_profiles (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT NOT NULL,
   provider TEXT NOT NULL DEFAULT 'custom',
@@ -121,7 +121,7 @@ CREATE TABLE ai_provider_profiles (
 );
 
 -- 文章元数据生成器配置（摘要 / 标签 / slug / 封面）
-CREATE TABLE ai_post_generators (
+CREATE TABLE IF NOT EXISTS ai_post_generators (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   target_key TEXT UNIQUE NOT NULL,
   label TEXT NOT NULL,
