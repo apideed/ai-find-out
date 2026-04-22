@@ -28,6 +28,7 @@ database_id = "ee7c358d-3de1-4c76-ac5d-f59270246c71"
 
 [[r2_buckets]]
 binding = "IMAGES"
+bucket_name = "ai-find-out-images"
 
 # Optional Queue binding for background jobs. Uncomment after creating the queue.
 # [[queues.producers]]
