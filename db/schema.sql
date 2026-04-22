@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS posts (
 );
 
 -- 索引
+
 CREATE INDEX idx_posts_slug ON posts(slug);
 CREATE INDEX idx_posts_category ON posts(category);
 CREATE INDEX idx_posts_published ON posts(published_at DESC);
@@ -215,7 +216,7 @@ CREATE TABLE IF NOT EXISTS api_tokens (
   is_active INTEGER DEFAULT 1
 );
 
-CREATE INDEX idx_api_tokens_token ON api_tokens(token);
+CREATE INDEX IF NOT EXISTS idx_api_tokens_token ON api_tokens(token);
 
 -- 插入默认分类
 INSERT INTO categories (name, slug) VALUES
